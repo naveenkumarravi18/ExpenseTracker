@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Expense</title>
+</head>
+<body>
+    <h1>Edit Expense</h1>
+
+	<form th:action="@{/expense/update/{id}(id=${expense.id})}" th:object="${expense}" method="post">
+        <label>Description:</label>
+        <input type="text" th:field="*{description}" /><br>
+
+        <label>Amount:</label>
+        <input type="number" th:field="*{amount}" /><br>
+
+        <label>Date:</label>
+        <input type="date" th:field="*{date}" /><br>
+
+        <button type="submit">Update Expense</button>
+    </form>
+
+    <a href="/expenses">Back to Expense List</a>
+</body>
+</html>

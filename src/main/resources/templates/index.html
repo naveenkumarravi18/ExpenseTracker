@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Personal Budget Tracker</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #1f2937;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 15px 30px;
+            background-color: #3b82f6;
+            color: white;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        a:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            position: fixed;
+            bottom: 20px;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Personal Budget Tracker</h1>
+	<div class="nav-links">
+	    <a href="/incomes">💰 Manage Incomes</a>
+	    <a href="/expenses">💸 Manage Expenses</a>
+	    <a href="/summary">📊 View Summary</a>
+	</div>
+    <footer>
+        &copy; 2025 Personal Budget Tracker. All rights reserved.
+    </footer>
+</body>
+</html>

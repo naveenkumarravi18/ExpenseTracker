@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Expenses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6; /* Soft gray background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1, h3 {
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+
+        .actions a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            margin: 0 5px;
+        }
+
+        .actions a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Expenses</h1>
+    <h3>Total Expenses: ₹ <span th:text="${totalExpenses}"></span></h3>
+
+    <table>
+        <tr>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="expense : ${expenses}">
+            <td th:text="${expense.description}"></td>
+            <td th:text="${expense.amount}"></td>
+            <td th:text="${expense.category}"></td>
+            <td class="actions">
+                <a th:href="@{'/expense/edit/' + ${expense.id}}">Edit</a> |
+                <a th:href="@{'/expense/delete/' + ${expense.id}}">Delete</a>
+            </td>
+        </tr>
+    </table>
+
+    <div class="container">
+        <h3>Add New Expense</h3>
+        <form action="/expense" method="post">
+            <input type="text" name="description" placeholder="Description" required>
+            <input type="number" name="amount" placeholder="Amount" step="0.01" required>
+            <input type="text" name="category" placeholder="Category" required>
+            <button type="submit" class="btn">Add Expense</button>
+        </form>
+    </div>
+</body>
+</html>
